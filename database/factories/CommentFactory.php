@@ -24,7 +24,7 @@ class CommentFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
-            'body' => $this->faker->sentence(6, true)
+            'body' => $this->faker->text(50)
         ];
     }
 }
