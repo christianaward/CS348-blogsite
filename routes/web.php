@@ -22,3 +22,7 @@ Route::get('/home', 'App\Http\Controllers\PostController@index');
 Route::get('/signup', function () {
     return view('users/create');
 });
+
+Route::get('/login', function () {
+    return view('users/login');
+});
