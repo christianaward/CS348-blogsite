@@ -27,8 +27,8 @@
       <nav class="navbar navbar-dark bg-dark justify-content-between">
         <a href="/home" class="navbar-brand">Navbar</a>
         <form class="form-inline">
-          <a href="/signup" class="btn btn-outline-info" type="button" style="margin-right:10px; ">Create an account</a>
-          <a href="/login" class="btn btn-outline-success" type="button">Login</a>
+          <a href="{{ route('users.create') }}" class="btn btn-outline-info" type="button" style="margin-right:10px; ">Create an account</a>
+          <a href="{{ route('users.login') }}" class="btn btn-outline-success" type="button">Login</a>
         </form>
       </nav>
 
