@@ -17,6 +17,13 @@
 
                 <div class="input-group" style="margin-bottom: 40px;">
                     <div class="input-group-prepend">
+                        <span class="input-group-text font-weight-bold">Full Name</span>
+                    </div>
+                    <input type="text" class="form-control" id="name" placeholder="Full Name"/>
+                </div>
+
+                <div class="input-group" style="margin-bottom: 40px;">
+                    <div class="input-group-prepend">
                         <span class="input-group-text font-weight-bold">Email</span>
                     </div>
                     <input type="text" class="form-control" id="email" placeholder="Email"/>
