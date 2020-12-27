@@ -28,7 +28,7 @@
                     <input type="password" class="form-control" id="password" placeholder="Password"/>
                 </div>
 
-                <button type="button" class="btn btn-primary" style="float: right;">Signup&nbsp;<i class="fas fa-user-plus"></i></button>
+                <button type="button" class="btn btn-primary" style="float: right;">Sign up&nbsp;<i class="fas fa-user-plus"></i></button>
             </form>
         </div>
         <div class="col-7"></div>
