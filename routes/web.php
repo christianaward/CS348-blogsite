@@ -22,3 +22,5 @@ Route::get('/home', 'App\Http\Controllers\PostController@index');
 Route::get('/signup', 'App\Http\Controllers\UserController@create')->name('users.create');
 
 Route::get('/login', 'App\Http\Controllers\UserController@login')->name('users.login');
+
+Route::get('/home', 'App\Http\Controllers\UserController@store')->name('users.store');
