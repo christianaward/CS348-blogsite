@@ -22,13 +22,13 @@ class UserFactory extends Factory
      */
     public function definition()
     {
-        $avatars = ['/images/borderCollie.jpg', '/images/goldenLab.jpg'];
+        $avatars = ['/images/borderCollie.jpg', '/images/borderTerrier.jpg', '/images/dalmatian.jpg', '/images/germanSheperd.jpg', '/images/goldenLab.jpg', '/images/spaniel.png'];
 
         return [
             'name' => $this->faker->name,
             'email' => $this->faker->unique()->safeEmail,
             'display_name' => $this->faker->unique()->userName,
-            'avatar' => $avatars[rand(0,1)],
+            'avatar' => $avatars[rand(0,5)],
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
