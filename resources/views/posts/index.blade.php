@@ -9,7 +9,7 @@
                     <div class="card-body">
                         <h5 class="card-title">
                             <img class="img-circle" src="{{$post->user->avatar}}" alt="User Profile Image">
-                            {{ $post->user->name }}
+                            {{ $post->user->display_name }}
                             <button type="button" class="btn text-white" data-toggle="modal" data-target="#commentModal" style="float:right;">Reply&nbsp;<i class="fas fa-comment"></i></button>
 
                         </h5>
@@ -24,7 +24,7 @@
                     <div class="card-body">
                         <h6 class="card-title">
                             <img class="img-circle" src="{{$comment->user->avatar}}" alt="User Profile Image">
-                            {{ $comment->user->name }}
+                            {{ $comment->user->display_name }}
                         </h6>
                         <p class="card-text">
                             {{ $comment->body }}
@@ -51,7 +51,7 @@
                         <div class="card-body">
                             <h5 class="card-title">
                                 <img class="img-circle" src="{{$post->user->avatar}}" alt="User Profile Image">
-                                {{ $post->user->name }}
+                                {{ $post->user->display_name }}
                             </h5>
                             <p class="card-text">
                                 {{ $post->body }}
@@ -64,7 +64,7 @@
                             <div class="card-body">
                                 <h6 class="card-title">
                                     <img class="img-circle" src="{{$comment->user->avatar}}" alt="User Profile Image">
-                                    {{ $comment->user->name }}
+                                    {{ $comment->user->display_name }}
                                 </h6>
                                 <textarea class="form-control" id="commentText" placeholder="Your reply" rows="2" maxlength="80"></textarea>
                                 <button type="button" class="btn bg-primary text-white" style="float:right; margin-top:5px;">Comment&nbsp;<i class="fas fa-comment-dots"></i></button>
