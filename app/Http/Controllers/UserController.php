@@ -39,7 +39,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'username' => 'bail|required|max:255|unique:users,username',
+            'name' => 'bail|required|max:255',
+            'email' => 'bail|required|max:255|email:rfc,dns',
+            'password' => 'bail|required|max:255',
+        ]);
+
+        return "Passed Validation";
     }
 
     /**
