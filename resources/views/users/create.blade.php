@@ -39,6 +39,20 @@
                 <button type="submit" class="btn btn-primary" style="float: right;">Sign up&nbsp;<i class="fas fa-user-plus"></i></button>
             </form>
         </div>
-        <div class="col-7"></div>
+        <div class="col-3">
+            @if ($errors->any())
+                <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+                    <div class="card-header"><b>There was an error creating your account</b></div>
+                    <div class="card-body">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                    </div>
+                </div>
+            @endif
+        </div>
+        <div class="col-4"></div>
     </div>
 @endsection
