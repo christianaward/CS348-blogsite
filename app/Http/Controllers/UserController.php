@@ -43,8 +43,9 @@ class UserController extends Controller
         $validated = $request->validate([
             'username' => 'bail|required|max:255|unique:users,username',
             'name' => 'bail|required|max:255',
-            'email' => 'bail|required|max:255|email:rfc,dns',
+            'email' => 'bail|required|max:255|unique:users,email|email:rfc,dns',
             'password' => 'bail|required|max:255',
+            'avatar' => 'required',
         ]);
 
         $user = new User;
@@ -52,7 +53,7 @@ class UserController extends Controller
         $user->name = $validated['name'];
         $user->email = $validated['email'];
         $user->password = $validated['password'];
-        $user->avatar = '/images/borderCollie.jpg';
+        $user->avatar = $validated['avatar'];
         $user->save();
 
         session()->flash('message', 'User created successfully.');
