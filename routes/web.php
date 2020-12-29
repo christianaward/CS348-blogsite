@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', 'App\Http\Controllers\PostController@index');
+Route::get('/home', 'App\Http\Controllers\PostController@index')->name('posts.index');
 
 Route::get('/signup', 'App\Http\Controllers\UserController@create')->name('users.create');
 
