@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -27,11 +29,6 @@ class UserController extends Controller
         return view('users.create');
     }
 
-    public function login()
-    {
-        return view('users.login');
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -48,13 +45,16 @@ class UserController extends Controller
             'avatar' => 'required',
         ]);
 
+        
         $user = new User;
         $user->username = $validated['username'];
         $user->name = $validated['name'];
         $user->email = $validated['email'];
-        $user->password = $validated['password'];
+        $user->password = Hash::make($validated['password']);
         $user->avatar = $validated['avatar'];
         $user->save();
+        
+        Auth::login($user);
 
         session()->flash('message', 'User created successfully.');
         return redirect()->route('posts.index');

@@ -37,8 +37,13 @@
       <nav class="navbar navbar-dark bg-dark justify-content-between">
         <a href="/home" class="navbar-brand">Navbar</a>
         <form class="form-inline">
-          <a href="{{ route('users.create') }}" class="btn btn-outline-info" type="button" style="margin-right:10px; ">Create an account</a>
-          <a href="{{ route('users.login') }}" class="btn btn-outline-success" type="button">Login</a>
+          @if (Auth::check())
+            <h4 class="text-white" style="margin-right:10px;"><i class="fas fa-user"></i>&nbsp;{{ Auth::user()->username }}</h4>
+            <a href="{{ route('auth.logout') }}" class="btn btn-outline-info" type="submit">Logout</a>
+          @else
+            <a href="{{ route('users.create') }}" class="btn btn-outline-info" type="button" style="margin-right:10px; ">Create an account</a>
+            <a href="{{ route('auth.login') }}" class="btn btn-outline-success" type="button">Login</a>
+          @endif
         </form>
       </nav>
 

@@ -21,6 +21,8 @@ Route::get('/home', 'App\Http\Controllers\PostController@index')->name('posts.in
 
 Route::get('/signup', 'App\Http\Controllers\UserController@create')->name('users.create');
 
-Route::get('/login', 'App\Http\Controllers\UserController@login')->name('users.login');
+Route::get('/login', 'App\Http\Controllers\AuthController@login')->name('auth.login');
 
-Route::post('/home', 'App\Http\Controllers\UserController@store')->name('users.store');
+Route::post('/signup', 'App\Http\Controllers\UserController@store')->name('users.store');
+
+Route::get('/logout', 'App\Http\Controllers\AuthController@logout')->name('auth.logout');
