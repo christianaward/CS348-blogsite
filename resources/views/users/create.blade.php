@@ -12,21 +12,21 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text font-weight-bold">Username</span>
                     </div>
-                    <input type="text" class="form-control" name="username" placeholder="Username"/>
+                    <input type="text" class="form-control" name="username" value="{{ old('username')}}" placeholder="Username"/>
                 </div>
 
                 <div class="input-group" style="margin-bottom: 40px;">
                     <div class="input-group-prepend">
                         <span class="input-group-text font-weight-bold">Full Name</span>
                     </div>
-                    <input type="text" class="form-control" name="name" placeholder="Full Name"/>
+                    <input type="text" class="form-control" name="name" value="{{ old('name')}}" placeholder="Full Name"/>
                 </div>
 
                 <div class="input-group" style="margin-bottom: 40px;">
                     <div class="input-group-prepend">
                         <span class="input-group-text font-weight-bold">Email</span>
                     </div>
-                    <input type="text" class="form-control" name="email" placeholder="Email"/>
+                    <input type="text" class="form-control" name="email" value="{{ old('email')}}" placeholder="Email"/>
                 </div>
 
                 <div class="input-group" style="margin-bottom: 20px;">
