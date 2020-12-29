@@ -2,7 +2,11 @@
 
 @section('content')
     <div class="row h-100">
-        <div class="col-4"></div>
+        <div class="col-4">
+            @if (session('message'))
+                <p>{{ session('message') }}</p>
+            @endif
+        </div>
         <div class="col-4" style="margin-bottom: 20px;">
             @foreach ($posts as $post)
                 <div class="card bg-primary text-white" style="margin-top: 10px;">

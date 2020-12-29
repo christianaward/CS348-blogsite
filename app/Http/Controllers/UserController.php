@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -46,7 +47,16 @@ class UserController extends Controller
             'password' => 'bail|required|max:255',
         ]);
 
-        return "Passed Validation";
+        $user = new User;
+        $user->username = $validated['username'];
+        $user->name = $validated['name'];
+        $user->email = $validated['email'];
+        $user->password = $validated['password'];
+        $user->avatar = '/images/borderCollie.jpg';
+        $user->save();
+
+        session()->flash('message', 'User created successfully.');
+        return redirect()->route('posts.index');
     }
 
     /**
