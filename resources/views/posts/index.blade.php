@@ -3,9 +3,6 @@
 @section('content')
     <div class="row h-100">
         <div class="col-4">
-            @if (session('message'))
-                <p>{{ session('message') }}</p>
-            @endif
         </div>
         <div class="col-4" style="margin-bottom: 20px;">
             @foreach ($posts as $post)
@@ -43,7 +40,19 @@
             </div>
         -->
         </div>
-        <div class="col-4"></div>
+        <div class="col-4">
+            <div class="toast float-right" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
+                <div class="toast-header">
+                  <strong class="mr-auto">Info</strong>
+                  <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="toast-body">
+                    <p>{{ session('message') }}</p>
+                </div>
+              </div>
+        </div>
     </div>
 
     <!-- Modal -->
