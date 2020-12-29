@@ -43,7 +43,7 @@
         <div class="col-4">
             <div class="toast float-right" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
                 <div class="toast-header">
-                  <strong class="mr-auto">Info</strong>
+                  <strong class="mr-auto"><i class="fas fa-info-circle"></i>&nbsp;Info</strong>
                   <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
