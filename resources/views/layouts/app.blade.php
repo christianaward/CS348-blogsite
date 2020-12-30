@@ -38,7 +38,7 @@
         <a href="/home" class="navbar-brand">Navbar</a>
         <form class="form-inline">
           @if (Auth::check())
-            <h4 class="text-white" style="margin-right:10px;"><i class="fas fa-user"></i>&nbsp;{{ Auth::user()->username }}</h4>
+            <span class="text-white" style="margin-right:10px;"><img class="img-circle" style="margin-right: 0px;" src="{{ Auth::user()->avatar }}" alt="User Profile Image">&nbsp;<a class="btn btn-outline-light disabled">{{ Auth::user()->username }}</a></span>
             <a href="{{ route('auth.logout') }}" class="btn btn-outline-info" type="submit">Logout</a>
           @else
             <a href="{{ route('users.create') }}" class="btn btn-outline-info" type="button" style="margin-right:10px; ">Create an account</a>
