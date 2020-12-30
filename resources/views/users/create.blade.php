@@ -6,7 +6,7 @@
     <div class="row h-100">
         <div class="col-2">
             @if ($errors->any())
-                <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+                <div class="card bg-danger text-white" style="max-width: 18rem;">
                     <div class="card-header"><b>There was an error creating your account</b></div>
                     <div class="card-body">
                     <ul>

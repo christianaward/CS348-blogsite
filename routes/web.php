@@ -26,3 +26,5 @@ Route::get('/login', 'App\Http\Controllers\AuthController@login')->name('auth.lo
 Route::post('/signup', 'App\Http\Controllers\UserController@store')->name('users.store');
 
 Route::get('/logout', 'App\Http\Controllers\AuthController@logout')->name('auth.logout');
+
+Route::post('/login', 'App\Http\Controllers\AuthController@validateLogin')->name('auth.validate');
