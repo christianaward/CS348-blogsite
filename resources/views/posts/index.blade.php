@@ -5,6 +5,21 @@
         <div class="col-4">
         </div>
         <div class="col-4" style="margin-bottom: 20px;">
+
+            <div class="card bg-dark text-white" style="margin-top: 10px;">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <img class="img-circle" src="{{ Auth::user()->avatar }}" alt="User Profile Image">
+                        {{ Auth::user()->username }}
+                        <button type="button" class="btn bg-primary text-white" style="float:right; margin-top:5px;">Post&nbsp;<i class="fas fa-comment-dots"></i></button>
+                    </h5>
+                    <p class="card-text">
+                        <textarea class="form-control" id="postText" placeholder="Your post" rows="2" maxlength="120"></textarea>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Loop through Posts in the database displaying them -->
             @foreach ($posts as $post)
                 <div class="card bg-primary text-white" style="margin-top: 10px;">
                     <div class="card-body">
@@ -20,6 +35,7 @@
                     </div>
                 </div>
 
+                <!-- Loop through each Post's comments in the database and display them -->
                 @foreach ($post->comments as $comment)
                 <div class="card bg-info text-white" style="margin-left: 10px;">
                     <div class="card-body">
