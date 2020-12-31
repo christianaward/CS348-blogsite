@@ -8,18 +8,21 @@
 
             <!-- Create post if user is logged in -->
             @if (Auth::check())
-            <div class="card bg-dark text-white" style="margin-top: 10px;">
-                <div class="card-body">
-                    <h5 class="card-title">
-                        <img class="img-circle" src="{{ Auth::user()->avatar }}" alt="User Profile Image">
-                        {{ Auth::user()->username }}
-                        <button type="button" class="btn bg-primary text-white" style="float:right; margin-top:5px;">Post&nbsp;<i class="fas fa-comment-dots"></i></button>
-                    </h5>
-                    <p class="card-text">
-                        <textarea class="form-control" id="postText" placeholder="Your post" rows="2" maxlength="120"></textarea>
-                    </p>
+            <form method="POST" action="{{ route('posts.store')}} ">
+                @csrf
+                <div class="card bg-dark text-white" style="margin-top: 10px;">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <img class="img-circle" src="{{ Auth::user()->avatar }}" alt="User Profile Image">
+                            {{ Auth::user()->username }}
+                            <button type="submit" class="btn bg-primary text-white" style="float:right; margin-top:5px;">Post&nbsp;<i class="fas fa-comment-dots"></i></button>
+                        </h5>
+                        <p class="card-text">
+                            <textarea class="form-control" name="body" placeholder="Your post" rows="2" maxlength="120"></textarea>
+                        </p>
+                    </div>
                 </div>
-            </div>
+            </form>
             @endif
 
             <!-- Loop through Posts in the database displaying them -->
@@ -53,11 +56,6 @@
                 </div>
                 @endforeach
             @endforeach
-            <!--
-            <div style="margin-top:10px;">
-                <span>{{$posts->links()}}</span>
-            </div>
-        -->
         </div>
         <div class="col-4">
             <div class="toast float-right" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
