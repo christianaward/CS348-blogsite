@@ -93,10 +93,10 @@
                         <div class="card bg-info text-white" style="margin-left: 10px;">
                             <div class="card-body">
                                 <h6 class="card-title">
-                                    <img class="img-circle" src="{{$comment->user->avatar}}" alt="User Profile Image">
-                                    {{ $comment->user->username }}
+                                    <img class="img-circle" src="{{ Auth::user()->avatar }}" alt="User Profile Image">
+                                    {{ Auth::user()->username }}
                                 </h6>
-                                <textarea class="form-control" id="commentText" placeholder="Your reply" rows="2" maxlength="80"></textarea>
+                                <textarea class="form-control" id="commentText" placeholder="Your reply" rows="2" maxlength="60"></textarea>
                                 <button type="button" class="btn bg-primary text-white" style="float:right; margin-top:5px;">Comment&nbsp;<i class="fas fa-comment-dots"></i></button>
                             </div>
                         </div>
