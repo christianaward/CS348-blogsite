@@ -6,6 +6,8 @@
         </div>
         <div class="col-4" style="margin-bottom: 20px;">
 
+            <!-- Create post if user is logged in -->
+            @if (Auth::check())
             <div class="card bg-dark text-white" style="margin-top: 10px;">
                 <div class="card-body">
                     <h5 class="card-title">
@@ -18,6 +20,7 @@
                     </p>
                 </div>
             </div>
+            @endif
 
             <!-- Loop through Posts in the database displaying them -->
             @foreach ($posts as $post)
