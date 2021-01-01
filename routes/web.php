@@ -29,8 +29,8 @@ Route::get('/logout', 'App\Http\Controllers\AuthController@logout')->name('auth.
 
 Route::post('/login', 'App\Http\Controllers\AuthController@validateLogin')->name('auth.validate');
 
-Route::post('/home', 'App\Http\Controllers\PostController@store')->name('posts.store');
+Route::post('/home', 'App\Http\Controllers\PostController@store')->name('posts.store')->middleware('auth');
 
-Route::get('posts/{post}', 'App\Http\Controllers\PostController@show')->name('posts.show');
+Route::get('posts/{post}', 'App\Http\Controllers\PostController@show')->name('posts.show')->middleware('auth');
 
-Route::post('posts', 'App\Http\Controllers\CommentController@store')->name('comments.store');
+Route::post('posts', 'App\Http\Controllers\CommentController@store')->name('comments.store')->middleware('auth');
