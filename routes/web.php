@@ -32,3 +32,5 @@ Route::post('/login', 'App\Http\Controllers\AuthController@validateLogin')->name
 Route::post('/home', 'App\Http\Controllers\PostController@store')->name('posts.store');
 
 Route::get('posts/{post}', 'App\Http\Controllers\PostController@show')->name('posts.show');
+
+Route::post('posts', 'App\Http\Controllers\CommentController@store')->name('comments.store');

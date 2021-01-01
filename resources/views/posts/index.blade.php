@@ -8,7 +8,7 @@
 
             <!-- Create post if user is logged in -->
             @if (Auth::check())
-            <form method="POST" action="{{ route('posts.store')}} ">
+            <form method="POST" action="{{ route('posts.store') }}">
                 @csrf
                 <div class="card bg-dark text-white" style="margin-top: 10px;">
                     <div class="card-body">

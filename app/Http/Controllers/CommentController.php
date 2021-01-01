@@ -43,9 +43,12 @@ class CommentController extends Controller
         $comment = new Comment;
         $comment->body = $validated['body'];
         $comment->user_id = Auth::user()->id;
+        $comment->post_id = $request['post_id'];
+
 
         $comment->save();
-        return $comment;
+        session()->flash('message', 'Comment posted successfully.');
+        return redirect()->route('posts.index');
     }
 
     /**
