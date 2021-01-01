@@ -75,9 +75,15 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        if (Auth::user()->username == $post->user->username) {
+            return view('posts.edit' , ['post' => $post]);
+        }
+        else {
+            session()->flash('message', 'You do not have sufficient permissions to view this.');
+            return redirect()->route('posts.index');
+        }
     }
 
     /**
@@ -89,7 +95,17 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validate([
+            'body' => 'required|max:120',
+        ]);
+
+        $post = Post::find($id);
+
+        $post->body = $validated['body'];
+        $post->save();
+
+        session()->flash('message', 'Post updated successfully.');
+        return redirect()->route('posts.index');
     }
 
     /**

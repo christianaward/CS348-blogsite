@@ -34,3 +34,7 @@ Route::post('/home', 'App\Http\Controllers\PostController@store')->name('posts.s
 Route::get('posts/{post}', 'App\Http\Controllers\PostController@show')->name('posts.show')->middleware('auth');
 
 Route::post('posts', 'App\Http\Controllers\CommentController@store')->name('comments.store')->middleware('auth');
+
+Route::get('edit/{post}', 'App\Http\Controllers\PostController@edit')->name('posts.edit')->middleware('auth');
+
+Route::post('edit/{post}', 'App\Http\Controllers\PostController@update')->name('posts.update')->middleware('auth');
