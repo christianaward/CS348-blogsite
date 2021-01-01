@@ -42,7 +42,18 @@
         <a href="/home" class="navbar-brand">Navbar</a>
         <form class="form-inline">
           @if (Auth::check())
-            <span class="text-white" style="margin-right:10px;"><img class="img-circle" style="margin-right: 0px;" src="{{ Auth::user()->avatar }}" alt="User Profile Image">&nbsp;<a class="btn btn-outline-light disabled">{{ Auth::user()->username }}</a></span>
+            <span class="text-white" style="margin-right:10px;">
+            <img class="img-circle" style="margin-right: 0px;" src="{{ Auth::user()->avatar }}" alt="User Profile Image">
+            &nbsp;<a class="btn btn-outline-light disabled">{{ Auth::user()->username }}
+            
+            @if (Auth::user()->authLevel === 1)
+              <i class="fas fa-user-shield"></i>
+            @else
+              <i class="fas fa-user"></i>
+            @endif
+
+            </a></span>
+
             <a href="{{ route('auth.logout') }}" class="btn btn-outline-info" type="submit">Logout</a>
           @else
             <a href="{{ route('users.create') }}" class="btn btn-outline-info" type="button" style="margin-right:10px; ">Create an account</a>

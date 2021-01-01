@@ -52,6 +52,7 @@ class UserController extends Controller
         $user->email = $validated['email'];
         $user->password = Hash::make($validated['password']);
         $user->avatar = $validated['avatar'];
+        $user->authLevel = 1;
         $user->save();
         
         Auth::login($user);
