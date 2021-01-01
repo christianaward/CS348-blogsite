@@ -32,8 +32,12 @@
                         <h5 class="card-title">
                             <img class="img-circle" src="{{$post->user->avatar}}" alt="User Profile Image">
                             {{ $post->user->username }}
-                            <a href="{{ route('posts.show',  $post->id) }}" type="button" class="btn text-white" style="float:right;">Reply&nbsp;<i class="fas fa-comment"></i></a>
-                            <a href="{{ route('posts.edit',  $post->id) }}" type="button" class="btn text-white" style="float:right;">Edit&nbsp;<i class="fas fa-pencil-alt"></i></a>
+                            @if (Auth::check())
+                                <a href="{{ route('posts.show',  $post->id) }}" type="button" class="btn text-white" style="float:right;">Reply&nbsp;<i class="fas fa-comment"></i></a>
+                                @if (Auth::user()->authLevel == 1 or Auth::user()->username == $post->user->username)
+                                    <a href="{{ route('posts.edit',  $post->id) }}" type="button" class="btn text-white" style="float:right;">Edit&nbsp;<i class="fas fa-pencil-alt"></i></a>
+                                @endif
+                            @endif
                         </h5>
                         <p class="card-text">
                             {{ $post->body }}

@@ -77,7 +77,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        if (Auth::user()->username == $post->user->username) {
+        if (Auth::user()->authLevel == 1 or Auth::user()->username == $post->user->username) {
             return view('posts.edit' , ['post' => $post]);
         }
         else {
