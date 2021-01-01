@@ -9,8 +9,8 @@
             <div class="card bg-dark text-white" style="margin-top: 10px;">
                 <div class="card-body">
                     <h5 class="card-title">
-                        <img class="img-circle" src="{{ Auth::user()->avatar }}" alt="User Profile Image">
-                        {{ Auth::user()->username }}
+                        <img class="img-circle" src="{{ $post->user->avatar }}" alt="User Profile Image">
+                        {{ $post->user->username }}
                         <button type="submit" class="btn bg-primary text-white" style="float:right; margin-top:5px;">Update&nbsp;<i class="fas fa-comment-dots"></i></button>
                     </h5>
                     <p class="card-text">
