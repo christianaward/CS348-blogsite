@@ -30,3 +30,5 @@ Route::get('/logout', 'App\Http\Controllers\AuthController@logout')->name('auth.
 Route::post('/login', 'App\Http\Controllers\AuthController@validateLogin')->name('auth.validate');
 
 Route::post('/home', 'App\Http\Controllers\PostController@store')->name('posts.store');
+
+Route::get('posts/{post}', 'App\Http\Controllers\PostController@show')->name('posts.show');

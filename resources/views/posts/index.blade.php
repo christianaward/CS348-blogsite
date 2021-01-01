@@ -25,21 +25,36 @@
             </form>
             @endif
 
-            <div id="postList">
-                <div v-for="post in posts">
-                    <div class="card bg-primary text-white" style="margin-top: 10px;">
-                        <div class="card-body">
-                            <h5 class="card-title">
-                                <button type="button" class="btn text-white" data-toggle="modal" data-target="#commentModal" style="float:right;">Reply&nbsp;<i class="fas fa-comment"></i></button>
-                            </h5>
-                            <p class="card-text">
-                                @{{ post.body }}
-                            </p>
-                        </div>
-                    </div>
-                </div>  
-            </div>
-            
+            <!-- Loop through Posts in the database displaying them -->
+            @foreach ($posts as $post)
+                <div class="card bg-primary text-white" style="margin-top: 10px;">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <img class="img-circle" src="{{$post->user->avatar}}" alt="User Profile Image">
+                            {{ $post->user->username }}
+                            <a href="{{ route('posts.show',  $post->id) }}" type="button" class="btn text-white" style="float:right;">Reply&nbsp;<i class="fas fa-comment"></i></a>
+                        </h5>
+                        <p class="card-text">
+                            {{ $post->body }}
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Loop through each Post's comments in the database and display them -->
+                @foreach ($post->comments as $comment)
+                <div class="card bg-info text-white" style="margin-left: 10px;">
+                    <div class="card-body">
+                        <h6 class="card-title">
+                            <img class="img-circle" src="{{$comment->user->avatar}}" alt="User Profile Image">
+                            {{ $comment->user->username }}
+                        </h6>
+                        <p class="card-text">
+                            {{ $comment->body }}
+                        </p>
+                    </div>
+                </div>
+                @endforeach
+            @endforeach
         </div>
         <div class="col-4">
             <div class="toast float-right" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
@@ -58,7 +73,7 @@
 
     <script>
         var app = new Vue({
-            el: '#postList',
+            el: '#comment',
             data: {
                 posts: [],
             },
@@ -72,5 +87,10 @@
                 })
             },
         })
+
+        function reply_click(clicked_id)
+        {
+            document.getElementById("post_id").innerHTML = clicked_id;
+        }
     </script>
 @endsection
