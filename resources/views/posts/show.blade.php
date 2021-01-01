@@ -2,7 +2,21 @@
 
 @section('content')
 <div class="row">
-    <div class="col-4"></div>
+    <div class="col-2">
+        @if ($errors->any())
+            <div class="card bg-danger text-white" style="max-width: 18rem;">
+                <div class="card-header"><b>There was an error posting your comment</b></div>
+                <div class="card-body">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+                </div>
+            </div>
+        @endif
+    </div>
+    <div class="col-2"></div>
     <div class="col-4">
         <div class="card bg-primary text-white" style="margin-top: 10px;">
             <div class="card-body">
@@ -25,7 +39,7 @@
                         {{ Auth::user()->username }}
                         <input name="post_id" type="text" style="visibility: hidden" value="{{$post->id}}">
                     </h6>
-                    <textarea class="form-control" name="body" placeholder="Your reply" rows="2" maxlength="80"></textarea>
+                    <textarea class="form-control" name="body" placeholder="Your reply" rows="2" maxlength="60"></textarea>
                     <button type="submit" class="btn bg-primary text-white" style="float:right; margin-top:5px;">Comment&nbsp;<i class="fas fa-comment-dots"></i></button>
                 </div>
             </div>
