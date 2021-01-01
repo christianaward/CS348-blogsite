@@ -19,5 +19,6 @@
                 </div>
             </div>
         </form>
+        <a href="{{ route('posts.destroy', $post->id) }}" class="btn btn-danger" style="float:right; margin-top: 10px;">Delete&nbsp;<i class="far fa-trash-alt"></i></a>
     <div class="col-4"></div>
 @endsection

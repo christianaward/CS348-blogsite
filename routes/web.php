@@ -38,3 +38,5 @@ Route::post('posts', 'App\Http\Controllers\CommentController@store')->name('comm
 Route::get('edit/{post}', 'App\Http\Controllers\PostController@edit')->name('posts.edit')->middleware('auth');
 
 Route::post('edit/{post}', 'App\Http\Controllers\PostController@update')->name('posts.update')->middleware('auth');
+
+Route::get('/destroy/{post}', 'App\Http\Controllers\PostController@destroy')->name('posts.destroy')->middleware('auth');
