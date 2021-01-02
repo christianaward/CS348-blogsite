@@ -8,14 +8,16 @@
 
             <!-- Create post if user is logged in -->
             @if (Auth::check())
-            <form method="POST" action="{{ route('posts.store') }}">
+            <form method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="card bg-dark text-white" style="margin-top: 10px;">
                     <div class="card-body">
                         <h5 class="card-title">
                             <img class="img-circle" src="{{ Auth::user()->avatar }}" alt="User Profile Image">
                             {{ Auth::user()->username }}
+                            
                             <button type="submit" class="btn bg-primary text-white" style="float:right; margin-top:5px;">Post&nbsp;<i class="fas fa-comment-dots"></i></button>
+                            <input type="file" name="fileToUpload" class="btn bg-outline-info text-white" style="float:right;">
                         </h5>
                         <p class="card-text">
                             <textarea class="form-control" name="body" placeholder="Your post" rows="2" maxlength="120"></textarea>
@@ -28,6 +30,9 @@
             <!-- Loop through Posts in the database displaying them -->
             @foreach ($posts as $post)
                 <div class="card bg-primary text-white" style="margin-top: 10px;">
+                    @if (!is_null($post->image)) 
+                        <img class="card-img-top" src="{{ $post->image }}" alt="Card image cap">
+                    @endif
                     <div class="card-body">
                         <h5 class="card-title">
                             <img class="img-circle" src="{{$post->user->avatar}}" alt="User Profile Image">

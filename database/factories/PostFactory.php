@@ -22,7 +22,9 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            'body' => $this->faker->text(100)
+            'body' => $this->faker->text(100),
+            //'image' => $this->faker->imageUrl($width = 400, $height= 300)
+            'image' => null
         ];
     }
 }
