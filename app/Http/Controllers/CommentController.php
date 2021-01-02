@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CommentController extends Controller
 {
@@ -16,6 +17,16 @@ class CommentController extends Controller
     public function index()
     {
         //
+    }
+
+    public function apiIndex($id)
+    {
+        $comments = DB::table('comments')
+        ->join('users', 'users.id', '=', 'comments.user_id')
+        ->select('comments.body', 'users.username', 'users.avatar')
+        ->where('comments.post_id', '=', $id)
+        ->get();
+        return $comments;
     }
 
     /**

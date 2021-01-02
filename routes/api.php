@@ -18,6 +18,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('posts', 'App\Http\Controllers\PostController@apiIndex')->name('api.posts.index');
+Route::get('comments/{post}', 'App\Http\Controllers\CommentController@apiIndex')->name('api.comments.index');
 
 Route::post('/home', 'App\Http\Controllers\CommentController@store')->name('api.comments.store');

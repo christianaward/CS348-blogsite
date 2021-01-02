@@ -80,27 +80,4 @@
               </div>
         </div>
     </div>
-
-    <script>
-        var app = new Vue({
-            el: '#comment',
-            data: {
-                posts: [],
-            },
-            mounted(){
-                axios.get("{{ route('api.posts.index') }}")
-                .then( response => {
-                    this.posts = response.data;
-                })
-                .catch( response => {
-                    console.log(response);
-                })
-            },
-        })
-
-        function reply_click(clicked_id)
-        {
-            document.getElementById("post_id").innerHTML = clicked_id;
-        }
-    </script>
 @endsection
