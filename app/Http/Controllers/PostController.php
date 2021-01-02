@@ -52,10 +52,14 @@ class PostController extends Controller
         $post = new Post;
         $post->body = $validated['body'];
         $post->user_id = Auth::user()->id;
-        $post->save();
+        //$post->save();
 
-        session()->flash('message', 'Post created successfully.');
-        return redirect()->route('posts.index');
+        $request->file('fileToUpload')->store('images');
+
+        return dd($request);
+
+        //session()->flash('message', 'Post created successfully.');
+        //return redirect()->route('posts.index');
     }
 
     /**
