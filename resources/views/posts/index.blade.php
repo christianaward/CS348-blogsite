@@ -31,7 +31,7 @@
             @foreach ($posts as $post)
                 <div class="card bg-primary text-white" style="margin-top: 10px;">
                     @if (!is_null($post->image)) 
-                        <img class="card-img-top" src="{{ $post->image }}" alt="Card image cap">
+                        <img class="card-img-top" src="{{ asset($post->image) }}" alt="Card image cap">
                     @endif
                     <div class="card-body">
                         <h5 class="card-title">
