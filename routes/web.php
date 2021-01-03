@@ -18,10 +18,6 @@ app()->singleton('App\Unsplash', function($app) {
     return new Unsplash("zSfUUDuhlVmh5yyqp9D-0SvCAbLHM_1VBgo94Te369g", "zu5YMIeo70zW9TE1CZSLsap8y9lC9BmPXXgNBOpzOzg");
 });
 
-Route::get('/unsplash', function () {
-    return ((new Unsplash("zSfUUDuhlVmh5yyqp9D-0SvCAbLHM_1VBgo94Te369g", "zu5YMIeo70zW9TE1CZSLsap8y9lC9BmPXXgNBOpzOzg"))->Photo());
-})->name('unsplash');
-
 Route::get('/', function () {
     return view('welcome');
 });

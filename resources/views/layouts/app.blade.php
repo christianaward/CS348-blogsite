@@ -40,7 +40,7 @@
     <body>
       <div id="app" v-bind:style="{ 'background-image': 'url(' + bgImage + ')' }">
         <nav class="navbar navbar-dark bg-dark justify-content-between">
-          <a href="/home" class="navbar-brand">Navbar</a>
+          <a href="/home" class="navbar-brand">Dogs Net&nbsp;<i class="fas fa-dog"></i></a>
           <form class="form-inline">
             @if (Auth::check())
               <span class="text-white" style="margin-right:10px;">
@@ -77,7 +77,7 @@
           bgImage: ''
       },
       mounted(){
-          axios.get("{{ route('unsplash') }}")
+          axios.get("{{ route('api.unsplash') }}")
           .then( response => {
               this.bgImage = response.data;
           })
