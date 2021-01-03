@@ -45,7 +45,12 @@ class PostController extends Controller
 
         $post = new Post;
         $post->body = $validated['body'];
-        $post->image = str_replace("public/", "storage/", $request->file('fileToUpload')->store('public'));
+        if ($request->file('fileToUpload') != null) {
+            $post->image = str_replace("public/", "storage/", $request->file('fileToUpload')->store('public'));
+        }
+        else {
+            $post->image = null;
+        }
         $post->user_id = Auth::user()->id;
         $post->save();
 
