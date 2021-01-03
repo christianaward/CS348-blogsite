@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -15,9 +16,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all()->sortByDesc('created_at');
-        //$sortedPosts = $posts->sortByDesc('created_at');
-        //$posts = Post::simplePaginate(5);
+        $posts = Post::orderBy('created_at', 'desc')->paginate(5);
+
         return view('posts.index', ['posts' => $posts]);
     }
 

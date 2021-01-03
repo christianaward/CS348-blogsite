@@ -65,6 +65,10 @@
                 </div>
                 @endforeach
             @endforeach
+
+            <div style="margin-top:10px;">
+                <span>{{$posts->links('pagination::bootstrap-4')}}</span>
+            </div>
         </div>
         <div class="col-4">
             <div class="toast float-right" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
