@@ -19,43 +19,50 @@
             @endif
         </div>
         <div class="col-3">
-            <h4 class="text-white">Create a new account.</h4>
-
-            <div class="input-group" style="margin-bottom: 40px;">
-                <div class="input-group-prepend">
-                    <span class="input-group-text font-weight-bold">Username</span>
+            <div class="card text-white bg-secondary">
+                <div class="card-header">
+                    <h5>Create a new account.</h5>
                 </div>
-                <input type="text" class="form-control" name="username" value="{{ old('username')}}" placeholder="Username"/>
-            </div>
-
-            <div class="input-group" style="margin-bottom: 40px;">
-                <div class="input-group-prepend">
-                    <span class="input-group-text font-weight-bold">Full Name</span>
+                <div class="card-body">
+                    <div class="input-group" style="margin-bottom: 40px;">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text font-weight-bold">Username</span>
+                        </div>
+                        <input type="text" class="form-control" name="username" value="{{ old('username')}}" placeholder="Username"/>
+                    </div>
+        
+                    <div class="input-group" style="margin-bottom: 40px;">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text font-weight-bold">Full Name</span>
+                        </div>
+                        <input type="text" class="form-control" name="name" value="{{ old('name')}}" placeholder="Full Name"/>
+                    </div>
+        
+                    <div class="input-group" style="margin-bottom: 40px;">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text font-weight-bold">Email</span>
+                        </div>
+                        <input type="text" class="form-control" name="email" value="{{ old('email')}}" placeholder="Email"/>
+                    </div>
+        
+                    <div class="input-group" style="margin-bottom: 20px;">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text font-weight-bold">Password</span>
+                        </div>
+                        <input type="password" class="form-control" name="password" placeholder="Password"/>
+                    </div>
+        
+                    <button type="submit" class="btn btn-primary" style="float: right;">Sign up&nbsp;<i class="fas fa-user-plus"></i></button>
                 </div>
-                <input type="text" class="form-control" name="name" value="{{ old('name')}}" placeholder="Full Name"/>
             </div>
-
-            <div class="input-group" style="margin-bottom: 40px;">
-                <div class="input-group-prepend">
-                    <span class="input-group-text font-weight-bold">Email</span>
-                </div>
-                <input type="text" class="form-control" name="email" value="{{ old('email')}}" placeholder="Email"/>
-            </div>
-
-            <div class="input-group" style="margin-bottom: 20px;">
-                <div class="input-group-prepend">
-                    <span class="input-group-text font-weight-bold">Password</span>
-                </div>
-                <input type="password" class="form-control" name="password" placeholder="Password"/>
-            </div>
-
-            <button type="submit" class="btn btn-primary" style="float: right;">Sign up&nbsp;<i class="fas fa-user-plus"></i></button>
         </div>
         <div class="col-3">
-            <h4 class="text-white">Choose a profile image.</h4>
             <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+                <div class="card-header">
+                    <h5 class="text-white">Choose a profile image.</h5>
+                </div>
                 <div class="card-body">
-                  <h5 class="card-title">Profile Images</h5>
+                  <h6 class="card-title">Profile Images</h6>
                   <label>
                       <input type="radio" name="avatar" value="/images/borderCollie.jpg">
                       <img class="img-circle" src="/images/borderCollie.jpg" alt="Border Collie">

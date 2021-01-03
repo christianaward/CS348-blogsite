@@ -19,23 +19,28 @@
             @endif
         </div>
         <div class="col-3">
-            <h4 class="text-white">Login.</h4>
-
-            <div class="input-group" style="margin-bottom: 40px;">
-                <div class="input-group-prepend">
-                    <span class="input-group-text font-weight-bold">Username</span>
+            <div class="card text-white bg-secondary">
+                <div class="card-header">
+                    <h5 class="text-white">Login.</h5>
                 </div>
-                <input type="text" class="form-control" name="username" value="{{ old('username')}}" placeholder="Username"/>
-            </div>
-
-            <div class="input-group" style="margin-bottom: 20px;">
-                <div class="input-group-prepend">
-                    <span class="input-group-text font-weight-bold">Password</span>
+                <div class="card-body">
+                    <div class="input-group" style="margin-bottom: 40px;">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text font-weight-bold">Username</span>
+                        </div>
+                        <input type="text" class="form-control" name="username" value="{{ old('username')}}" placeholder="Username"/>
+                    </div>
+        
+                    <div class="input-group" style="margin-bottom: 20px;">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text font-weight-bold">Password</span>
+                        </div>
+                        <input type="password" class="form-control" name="password" placeholder="Password"/>
+                    </div>
+        
+                    <button type="submit" class="btn btn-primary" style="float: right;">Login&nbsp;<i class="fas fa-sign-in-alt"></i></button>
                 </div>
-                <input type="password" class="form-control" name="password" placeholder="Password"/>
             </div>
-
-            <button type="submit" class="btn btn-primary" style="float: right;">Login&nbsp;<i class="fas fa-sign-in-alt"></i></button>
         </div>
         <div class="col-7"></div>
     </div>
