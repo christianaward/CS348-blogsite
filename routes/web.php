@@ -40,3 +40,6 @@ Route::get('edit/{post}', 'App\Http\Controllers\PostController@edit')->name('pos
 Route::post('edit/{post}', 'App\Http\Controllers\PostController@update')->name('posts.update')->middleware('auth');
 
 Route::get('/destroy/{post}', 'App\Http\Controllers\PostController@destroy')->name('posts.destroy')->middleware('auth');
+
+// Passed through web routes to maintain Auth::user model
+Route::post('comments/{post}', 'App\Http\Controllers\CommentController@store')->name('comments.store');

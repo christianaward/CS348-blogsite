@@ -41,20 +41,17 @@
             </div>
         </div>
 
-        <form method="POST" action="{{ route('comments.store') }}">
-            @csrf
-            <div class="card bg-info text-white" style="margin-left: 10px;">
-                <div class="card-body">
-                    <h6 class="card-title">
-                        <img class="img-circle" src="{{ Auth::user()->avatar }}" alt="User Profile Image">
-                        {{ Auth::user()->username }}
-                        <input name="post_id" type="text" style="visibility: hidden" value="{{$post->id}}">
-                    
-                    <textarea class="form-control" name="body" placeholder="Your reply" rows="2" maxlength="60"></textarea>
-                    <button type="submit" class="btn bg-primary text-white" style="float:right; margin-top:5px;">Comment&nbsp;<i class="fas fa-comment-dots"></i></button>
-                </div>
+        <div class="card bg-info text-white" style="margin-left: 10px;">
+            <div class="card-body">
+                <h6 class="card-title">
+                    <img class="img-circle" src="{{ Auth::user()->avatar }}" alt="User Profile Image">
+                    {{ Auth::user()->username }}
+                    <input name="post_id" style="visibility: hidden" v-model="post_id" value="{{$post->id}}">
+                </h6>
+                <textarea class="form-control" name="body" v-model="body" placeholder="Your reply" rows="2" maxlength="60" style="margin-top: 10px;"></textarea>
+                <button class="btn bg-primary text-white" @click="postComment" style="float:right; margin-top:5px;">Comment&nbsp;<i class="fas fa-comment-dots"></i></button>
             </div>
-        </form>
+        </div>
     </div>
     <div class="col-4"></div>
 
@@ -63,6 +60,24 @@
             el: '#comments',
             data: {
                 comments: [],
+                body: '',
+                post_id: ''
+            },
+            methods: {
+                postComment: function() {
+                    axios.post("{{ route('comments.store', $post->id) }}",
+                    {
+                        body: this.body,
+                        post_id: this.post_id
+                    })
+                    .then(response => {
+                        this.comments = response.data;
+                        this.body = ''
+                    })
+                    .catch(response => {
+                        console.log(response);
+                    })
+                }
             },
             mounted(){
                 axios.get("{{ route('api.comments.index', $post->id) }}")

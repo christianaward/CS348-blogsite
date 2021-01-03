@@ -45,7 +45,7 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
         $validated = $request->validate([
             'body' => 'required|max:60',
@@ -54,12 +54,33 @@ class CommentController extends Controller
         $comment = new Comment;
         $comment->body = $validated['body'];
         $comment->user_id = Auth::user()->id;
-        $comment->post_id = $request['post_id'];
-
+        $comment->post_id = $id;
 
         $comment->save();
-        session()->flash('message', 'Comment posted successfully.');
-        return redirect()->route('posts.index');
+
+        $comments = DB::table('comments')
+        ->join('users', 'users.id', '=', 'comments.user_id')
+        ->select('comments.body', 'users.username', 'users.avatar')
+        ->where('comments.post_id', '=', $id)
+        ->get();
+        return $comments;
+    }
+
+    public function apiStore(Request $request, $id)
+    {
+        $validated = $request->validate([
+            'body' => 'required|max:60',
+        ]);
+
+        return dd($request);
+
+        //$comment = new Comment;
+        //$comment->body = $validated['body'];
+        //$comment->user_id = $id;
+        //$comment->post_id = $request['post_id'];
+
+        //$comment->save();
+        //return $comment;
     }
 
     /**
