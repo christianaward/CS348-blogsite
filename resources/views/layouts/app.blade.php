@@ -2,7 +2,7 @@
 <html lang="en">
 
     <head>
-        <title>Dog Tinder</title>
+        <title>Dogs Net</title>
 
         <link rel="icon" href="/images/favicon.png">
 
