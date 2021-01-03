@@ -15,9 +15,9 @@
                         <h5 class="card-title">
                             <img class="img-circle" src="{{ Auth::user()->avatar }}" alt="User Profile Image">
                             {{ Auth::user()->username }}
-                            
-                            <button type="submit" class="btn bg-primary text-white" style="float:right; margin-top:5px;">Post&nbsp;<i class="fas fa-comment-dots"></i></button>
-                            <input type="file" name="fileToUpload" class="btn bg-outline-info text-white" style="float:right;">
+
+                            <button type="submit" class="btn bg-primary text-white" style="float:right;">Post&nbsp;<i class="fas fa-comment-dots"></i></button>
+                            <input type="file" name="fileToUpload" class="btn btn-sm text-white">
                         </h5>
                         <p class="card-text">
                             <textarea class="form-control" name="body" placeholder="Your post" rows="2" maxlength="120"></textarea>
