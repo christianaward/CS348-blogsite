@@ -37,35 +37,54 @@
     </head>
 
 
-    <body class="bg-secondary">
-      <nav class="navbar navbar-dark bg-dark justify-content-between">
-        <a href="/home" class="navbar-brand">Navbar</a>
-        <form class="form-inline">
-          @if (Auth::check())
-            <span class="text-white" style="margin-right:10px;">
-            <img class="img-circle" style="margin-right: 0px;" src="{{ Auth::user()->avatar }}" alt="User Profile Image">
-            &nbsp;<a class="btn btn-outline-light disabled">{{ Auth::user()->username }}
-            
-            @if (Auth::user()->authLevel === 1)
-              <i class="fas fa-user-shield"></i>
+    <body>
+      <div id="app" v-bind:style="{ 'background-image': 'url(' + bgImage + ')' }">
+        <nav class="navbar navbar-dark bg-dark justify-content-between">
+          <a href="/home" class="navbar-brand">Navbar</a>
+          <form class="form-inline">
+            @if (Auth::check())
+              <span class="text-white" style="margin-right:10px;">
+              <img class="img-circle" style="margin-right: 0px;" src="{{ Auth::user()->avatar }}" alt="User Profile Image">
+              &nbsp;<a class="btn btn-outline-light disabled">{{ Auth::user()->username }}
+              
+              @if (Auth::user()->authLevel === 1)
+                <i class="fas fa-user-shield"></i>
+              @else
+                <i class="fas fa-user"></i>
+              @endif
+
+              </a></span>
+
+              <a href="{{ route('auth.logout') }}" class="btn btn-outline-info" type="submit">Logout</a>
             @else
-              <i class="fas fa-user"></i>
+              <a href="{{ route('users.create') }}" class="btn btn-outline-info" type="button" style="margin-right:10px; ">Create an account</a>
+              <a href="{{ route('auth.login') }}" class="btn btn-outline-success" type="button">Login</a>
             @endif
+          </form>
+        </nav>
 
-            </a></span>
+        <div class="container-fluid" style="padding-top: 10px;">
 
-            <a href="{{ route('auth.logout') }}" class="btn btn-outline-info" type="submit">Logout</a>
-          @else
-            <a href="{{ route('users.create') }}" class="btn btn-outline-info" type="button" style="margin-right:10px; ">Create an account</a>
-            <a href="{{ route('auth.login') }}" class="btn btn-outline-success" type="button">Login</a>
-          @endif
-        </form>
-      </nav>
+            @yield('content')
 
-      <div class="container-fluid" style="padding-top: 10px;">
-
-          @yield('content')
-
-      </div>
+        </div>
+    </div>
     </body>
+    <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+          bgImage: ''
+      },
+      mounted(){
+          axios.get("{{ route('unsplash') }}")
+          .then( response => {
+              this.bgImage = response.data;
+          })
+          .catch( response => {
+              console.log(response);
+          })
+      },
+  })
+  </script>
 </html>
